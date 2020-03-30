@@ -1,15 +1,12 @@
 <template>
-  <div class="hello">
-    xixi
+  <div class="doc">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'doc'
 }
 </script>
 

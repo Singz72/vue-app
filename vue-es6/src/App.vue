@@ -1,19 +1,26 @@
 <template>
-  <div id="app">
-    <HelloWorld/>
+  <div class="app">
+    <Menu></Menu>
+    <Doc></Doc>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Menu from "./components/Menu.vue";
+import Doc from "./components/Doc.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Menu,
+    Doc
   }
-}
+};
 </script>
 
 <style>
+.app {
+  display: flex;
+  height: 100%;
+}
 </style>
