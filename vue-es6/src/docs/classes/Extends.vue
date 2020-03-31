@@ -1,10 +1,10 @@
 <template>
-  <div class="_this">this</div>
+  <div class="extends">extends</div>
 </template>
 
 <script>
 export default {
-  name: "_this"
+  name: "extendsType"
 };
 </script>
 

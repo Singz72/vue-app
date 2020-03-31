@@ -20,7 +20,6 @@ export default {
 
 <style>
 .app {
-  display: flex;
   height: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
-html,body {
+html,
+body {
   font: normal 0.8764em / 1.5em;
   margin: 0;
-  overflow-y: hidden;
   height: 100%;
 }
 

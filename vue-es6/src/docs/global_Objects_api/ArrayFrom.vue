@@ -1,10 +1,10 @@
 <template>
-  <div class="zuoyongyu">zuoyongyu</div>
+  <div class="array_from">array_from</div>
 </template>
 
 <script>
 export default {
-  name: "zuoyongyu"
+  name: "ArrayFrom"
 };
 </script>
 
