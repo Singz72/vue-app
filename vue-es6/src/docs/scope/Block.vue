@@ -1,10 +1,18 @@
 <template>
-  <div class="block">_block</div>
+  <div class="block">
+    <span v-html="content" v-highlightInsertd></span>
+  </div>
 </template>
 
 <script>
+import content from "./block.md";
 export default {
-  name: "block"
+  name: "block",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 

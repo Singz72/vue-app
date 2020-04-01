@@ -88,200 +88,249 @@ const router = new VueRouter({
   routes: [
     {
       path: "/_scope/_block",
-      component: Block
+      component: Block,
+      name: 'block'
     },
     {
       path: "/_scope/_let",
-      component: LetType
+      component: LetType,
+      name: '块级变量let'
     },
     {
       path: "/_scope/_const",
-      component: ConstType
+      component: ConstType,
+      name: '块级常量const'
     },
     {
       path: "/arrow_functions",
-      component: ArrowFunctions
+      component: ArrowFunctions,
+      name: '箭头函数'
     },
     {
       path: "/parameters/default_parameters",
-      component: DefaultParameters
+      component: DefaultParameters,
+      name: '默认参数值'
     },
     {
       path: "/parameters/rest_parameters",
-      component: RestParameters
+      component: RestParameters,
+      name: '剩余参数'
     },
     {
       path: "/parameters/spread_parameters",
-      component: SpreadParameters
+      component: SpreadParameters,
+      name: '展开运算符'
     },
     {
       path: "/template_strings",
-      component: TemplateStrings
+      component: TemplateStrings,
+      name: '模版字面量'
     },
     {
       path: "/Object_initializer",
-      component: ObjectInitializer
+      component: ObjectInitializer,
+      name: '对象属性加强'
     },
     {
       path: "/destructuring_assignment",
-      component: DestructuringAssignment
+      component: DestructuringAssignment,
+      name: '解构赋值'
     },
     {
       path: "/_module/_import",
-      component: ImportType
+      component: ImportType,
+      name: '导入(import)'
     },
     {
       path: "/_module/_export",
-      component: ExportType
+      component: ExportType,
+      name: '导出(export)'
     },
     {
       path: "/_module/export_default",
-      component: ExportDefault
+      component: ExportDefault,
+      name: '默认(export default)'
     },
     {
       path: "/_classes/_extends",
-      component: ExtendsType
+      component: ExtendsType,
+      name: '使用extends实现继承'
     },
     {
       path: "/_classes/_species",
-      component: Species
+      component: Species,
+      name: '重写构造器'
     },
     {
       path: "/_classes/_super",
-      component: SuperType
+      component: SuperType,
+      name: 'super关键字'
     },
     {
       path: "/_generators",
-      component: GeneratorsType
+      component: GeneratorsType,
+      name: '迭代和生成器'
     },
     {
       path: "/_promise",
-      component: PromiseType
+      component: PromiseType,
+      name: 'Promise'
     },
     {
       path: "/_proxy",
-      component: ProxyType
+      component: ProxyType,
+      name: '代理(Proxy)'
     },
     {
       path: "/_reflect",
-      component: ReflectType
+      component: ReflectType,
+      name: '反射(Reflect)'
     },
     {
       path: "/primitive_data_type/_symbol",
-      component: SymbolType
+      component: SymbolType,
+      name: 'Symbol类型'
     },
     {
       path: "/primitive_data_type/_set",
-      component: SetType
+      component: SetType,
+      name: 'Set类型'
     },
     {
       path: "/primitive_data_type/_map",
-      component: MapType
+      component: MapType,
+      name: 'Map类型'
     },
     {
       path: "/primitive_data_type/_typedArray",
-      component: TypedArrayType
+      component: TypedArrayType,
+      name: 'TypedArray类型'
     },
 
     {
       path: "/global_Objects_api/Object_assign",
-      component: ObjectAssign
+      component: ObjectAssign,
+      name: 'Object.assign'
     },
     {
       path: "/global_Objects_api/Array_from",
-      component: ArrayFrom
+      component: ArrayFrom,
+      name: 'Array.from'
     },
     {
       path: "/global_Objects_api/Array_of",
-      component: ArrayOf
+      component: ArrayOf,
+      name: 'Array.of'
     },
     {
       path: "/global_Objects_api/Array_prototype_fill",
-      component: ArrayPrototypeFill
+      component: ArrayPrototypeFill,
+      name: 'Array.prototype.fill'
     },
     {
       path: "/global_Objects_api/Array_prototype_find",
-      component: ArrayPrototypeFind
+      component: ArrayPrototypeFind,
+      name: 'Array.prototype.find'
     },
     {
       path: "/global_Objects_api/Array_prototype_findIndex",
-      component: ArrayPrototypeFindIndex
+      component: ArrayPrototypeFindIndex,
+      name: 'Array.prototype.findIndex'
     },
     {
       path: "/global_Objects_api/Array_prototype_assign",
-      component: ArrayPrototypeAssign
+      component: ArrayPrototypeAssign,
+      name: 'Array.assign'
     },
     {
       path: "/global_Objects_api/Array_prototype_copyWithin",
-      component: ArrayPrototypeCopyWithin
+      component: ArrayPrototypeCopyWithin,
+      name: 'Array.prototype.copyWithin'
     },
     {
       path: "/global_Objects_api/Array_prototype_entries",
-      component: ArrayPrototypeEntries
+      component: ArrayPrototypeEntries,
+      name: 'Array.prototype.entries'
     },
     {
       path: "/global_Objects_api/Array_prototype_keys",
-      component: ArrayPrototypeKeys
+      component: ArrayPrototypeKeys,
+      name: 'Array.prototype.keys'
     },
     {
       path: "/global_Objects_api/Array_prototype_values",
-      component: ArrayPrototypeValues
+      component: ArrayPrototypeValues,
+      name: 'Array.prototype.values'
     },
     {
       path: "/global_Objects_api/String_prototype_includs",
-      component: StringPrototypeIncluds
+      component: StringPrototypeIncluds,
+      name: 'String.prototype.includs'
     },
     {
       path: "/global_Objects_api/String_prototype_repeat",
-      component: StringPrototypeRepeat
+      component: StringPrototypeRepeat,
+      name: 'String.prototype.repeat'
     },
     {
       path: "/global_Objects_api/String_prototype_startsWith",
-      component: StringPrototypeStartsWith
+      component: StringPrototypeStartsWith,
+      name: 'String.prototype.startsWith'
     },
     {
       path: "/global_Objects_api/String_prototype_endsWith",
-      component: StringPrototypeEndsWith
+      component: StringPrototypeEndsWith,
+      name: 'String.prototype.endsWith'
     },
     {
       path: "/global_Objects_api/Number_EPSILON",
-      component: NumberEPSILON
+      component: NumberEPSILON,
+      name: 'Number.EPSILON'
     },
     {
       path: "/global_Objects_api/Number_isInteger",
-      component: NumberIsInteger
+      component: NumberIsInteger,
+      name: 'Number.isInteger'
     },
     {
       path: "/global_Objects_api/Number_isSafeInteger",
-      component: NumberIsSafeInteger
+      component: NumberIsSafeInteger,
+      name: 'Number.isSafeInteger'
     },
     {
       path: "/global_Objects_api/Number_isFinite",
-      component: NumberIsFinite
+      component: NumberIsFinite,
+      name: 'Number.isFinite'
     },
     {
       path: "/global_Objects_api/Number_isNaN",
-      component: NumberIsNaN
+      component: NumberIsNaN,
+      name: 'Number.isNaN'
     },
     {
       path: "/global_Objects_api/Math_acosh",
-      component: MathAcosh
+      component: MathAcosh,
+      name: 'Math.acosh'
     },
     {
       path: "/global_Objects_api/Math_hypot",
-      component: MathHypot
+      component: MathHypot,
+      name: 'Math.hypot'
     },
     {
       path: "/global_Objects_api/Math_imul",
-      component: MathImul
+      component: MathImul,
+      name: 'Math.imul'
     },
     {
       path: "/global_Objects_api/Math_sign",
-      component: MathSign
+      component: MathSign,
+      name: 'Math.sign'
     },
     {
       path: "/global_Objects_api/Math_trunc",
-      component: MathTrunc
+      component: MathTrunc,
+      name: 'Math.trunc'
     }
   ]
 });

@@ -1,12 +1,12 @@
 <template>
   <div class="menu-container">
-    <h2>ES6特性简介列表</h2>
+    <div class="menu-container-title">ES6特性简介列表</div>
     <ul>
       <li>
         作用域
         <ul>
           <li>
-            <router-link to="/_scope/_block">块级作用域</router-link>
+            <router-link to="/_scope/_block">块级作用域(block)</router-link>
           </li>
           <li>
             <router-link to="/_scope/_let">块级变量let</router-link>
@@ -216,6 +216,11 @@ export default {
   left: 0;
   width: 290px;
   box-sizing: border-box;
+}
+.menu-container-title{
+  font-size: 2.4em;
+  margin: 0.8em 0;
+  font-weight: bolder;
 }
 .record {
   padding: 40px 0 10px 0;
