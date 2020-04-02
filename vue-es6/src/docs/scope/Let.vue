@@ -1,10 +1,18 @@
 <template>
-  <div class="let">_let</div>
+  <div class="let">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../../md/scope/let.md";
 export default {
-  name: "let"
+  name: "let",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 

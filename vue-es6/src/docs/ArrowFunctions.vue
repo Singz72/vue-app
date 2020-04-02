@@ -1,10 +1,18 @@
 <template>
-  <div class="arrow_functions">arrow_functions</div>
+  <div class="arrow_functions">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../md/single/ArrowFunctions.md";
 export default {
-  name: "arrow_functions"
+  name: "arrow_functions",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 

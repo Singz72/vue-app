@@ -89,17 +89,17 @@ const router = new VueRouter({
     {
       path: "/_scope/_block",
       component: Block,
-      name: 'block'
+      name: '块级作用域（block）'
     },
     {
       path: "/_scope/_let",
       component: LetType,
-      name: '块级变量let'
+      name: '块级变量 let'
     },
     {
       path: "/_scope/_const",
       component: ConstType,
-      name: '块级常量const'
+      name: '块级常量 const'
     },
     {
       path: "/arrow_functions",
@@ -139,22 +139,22 @@ const router = new VueRouter({
     {
       path: "/_module/_import",
       component: ImportType,
-      name: '导入(import)'
+      name: '导入（import）'
     },
     {
       path: "/_module/_export",
       component: ExportType,
-      name: '导出(export)'
+      name: '导出（export）'
     },
     {
       path: "/_module/export_default",
       component: ExportDefault,
-      name: '默认(export default)'
+      name: '默认（export default）'
     },
     {
       path: "/_classes/_extends",
       component: ExtendsType,
-      name: '使用extends实现继承'
+      name: '使用 extends 实现继承'
     },
     {
       path: "/_classes/_species",
@@ -164,7 +164,7 @@ const router = new VueRouter({
     {
       path: "/_classes/_super",
       component: SuperType,
-      name: 'super关键字'
+      name: 'super 关键字'
     },
     {
       path: "/_generators",
@@ -179,32 +179,32 @@ const router = new VueRouter({
     {
       path: "/_proxy",
       component: ProxyType,
-      name: '代理(Proxy)'
+      name: '代理（Proxy）'
     },
     {
       path: "/_reflect",
       component: ReflectType,
-      name: '反射(Reflect)'
+      name: '反射（Reflect）'
     },
     {
       path: "/primitive_data_type/_symbol",
       component: SymbolType,
-      name: 'Symbol类型'
+      name: 'Symbol 类型'
     },
     {
       path: "/primitive_data_type/_set",
       component: SetType,
-      name: 'Set类型'
+      name: 'Set 类型'
     },
     {
       path: "/primitive_data_type/_map",
       component: MapType,
-      name: 'Map类型'
+      name: 'Map 类型'
     },
     {
       path: "/primitive_data_type/_typedArray",
       component: TypedArrayType,
-      name: 'TypedArray类型'
+      name: 'TypedArray 类型'
     },
 
     {

@@ -40,6 +40,7 @@ blockquote {
   padding: 1px 20px;
   background-color: #faebd8;
   margin-left: 10px;
+  margin-right: 0;
 }
 
 strong code {
@@ -49,7 +50,7 @@ strong code {
 }
 
 p {
-  /* margin: 0 0 1.7em 0; */
+  max-width: 700px;
   font-size: 1.6em;
   line-height: 1.6em;
   text-align: justify;
@@ -66,4 +67,18 @@ pre code {
   white-space: pre;
   -webkit-column-break-inside: avoid-column;
   border-left: 5px solid #ffb400;
+}
+
+blockquote p,
+code {
+  font-family: JetBM-Regular;
+}
+
+code span {
+  line-height: 24px;
+}
+
+hr {
+  border: #ffb400 1.5px solid;
+  margin: 45px 0 30px;
 }

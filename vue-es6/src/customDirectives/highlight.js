@@ -3,7 +3,7 @@ import "highlight.js/styles/routeros.css";
 
 let Highlight = {};
 Highlight.install = function(Vue) {
-  Vue.directive("highlightInsertd", {
+  Vue.directive("highlightInserted", {
     inserted: function(el) {
       let blocks = el.querySelectorAll("pre code");
       for (let i = 0; i < blocks.length; i++) {

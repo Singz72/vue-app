@@ -1,10 +1,18 @@
 <template>
-  <div class="default_parameters">default_parameters</div>
+  <div class="default_parameters">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../../md/parameters/default_parameters.md";
 export default {
-  name: "default_parameters"
+  name: "default_parameters",
+  data(){
+    return {
+      content,
+    }
+  }
 };
 </script>
 

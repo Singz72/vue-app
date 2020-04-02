@@ -32,10 +32,11 @@ export default {
   line-height: 1.6em;
   display: flex;
   align-items: center;
+  font-family: STSong;
 }
 .doc-main {
   padding: 19px 35px 70px;
-  max-width: 700px;
+  /* max-width: 700px; */
 }
 .doc-main p img {
   width: 70%;
