@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import content from "../../md/parameters/default_parameters.md";
+import content from "../../md/parameters/rest_parameters.md";
 export default {
   name: "rest_parameters",
   data(){

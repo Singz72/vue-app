@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import content from "../md/single/ArrowFunctions.md";
+import content from "../md/single/arrow_functions.md";
 export default {
   name: "arrow_functions",
   data() {
