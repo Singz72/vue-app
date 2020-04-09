@@ -1,191 +1,205 @@
-# default_parameters
+# 展开运算符
 
-**函数默认参数**允许在没有值或`undefined`被传入时使用默认形参。
+**展开语法(Spread syntax)**可以在函数调用/数组构造时, 将数组表达式或者`string`在语法层面展开；还可以在构造字面量对象时, 将对象表达式按`key-value`的方式展开。(字面量一般指 `[1, 2, 3]` 或者 `{name: "mdn"}` 这种简洁的构造方式)
 
 ## 语法
 
-> function [name]([param1[ = defaultValue1 ], ..., paramN[ = defaultValueN ]]]) { statements }
+函数调用：
 
----
+> myFunction(...iterableObj);
 
-## 描述
+字面量数组构造或字符串：
 
-**JavaScript** 中函数的参数默认是`undefined`。然而，在某些情况下可能需要设置一个不同的默认值。这是默认参数可以帮助的地方。
+> [...iterableObj, '4', ...'hello', 6];
 
-以前，一般设置默认参数的方法是在函数体测试参数是否为`undefined`，如果是的话就设置为默认的值。
+构造字面量对象时,进行克隆或者属性拷贝（ECMAScript 2018 规范新增特性）：
 
-下面的例子中，如果在调用`multiply`时，参数`b`的值没有提供，那么它的值就为`undefined`。如果直接执行`a * b`，函数会返回`NaN`。
-
-```JavaScript
-function multiply(a, b) {
-  return a * b;
-}
-
-multiply(5, 2); // 10
-multiply(5);    // NaN !
-```
-
-为了防止这种情况，第二行代码解决了这个问题，其中如果只使用一个参数调用`multiply`，则`b`设置为`1`：
-
-```JavaScript
-function multiply(a, b) {
-  b = (typeof b !== 'undefined') ?  b : 1;
-  return a * b;
-}
-
-multiply(5, 2); // 10
-multiply(5);    // 5
-```
-
-有了默认参数，我们不需要再在函数体内做不必要的检查。现在你可以在函数头将`b`的默认值置为`1`：
-
-```JavaScript
-function multiply(a, b = 1) {
-  return a * b;
-}
-
-multiply(5, 2); // 10
-multiply(5);    // 5
-```
+> let objClone = { ...obj };
 
 ---
 
 ## 示例
 
-### 传入`undefined` vs 其他假值
+### 在函数调用时使用展开语法
 
-在第二次调用中，即使第一个参数在调用时显式设置为`undefined`（虽然不是`null`或其他 falsy 值），但是`num`参数的值是默认值。
+#### 等价于 apply 的方式
 
-```JavaScript
-function test(num = 1) {
-  console.log(typeof num);
-}
+如果想将数组元素迭代为函数参数，一般使用`Function.prototype.apply`的方式进行调用。
 
-test();          // 'number' (num is set to 1)
-test(undefined); // 'number' (num is set to 1 too)
-
-// test with other falsy values:
-test('');        // 'string' (num is set to '')
-test(null);      // 'object' (num is set to null)
+```js
+function myFunction(x, y, z) {}
+var args = [0, 1, 2];
+myFunction.apply(null, args);
 ```
 
-### 调用时解析
+有了展开语法，可以这样写：
 
-在函数被调用时，参数默认值会被解析，所以不像 Python 中的例子，每次函数调用时都会创建一个新的参数对象。
-
-```JavaScript
-function append(value, array = []) {
-  array.push(value);
-  return array;
-}
-
-append(1); //[1]
-append(2); //[2], not [1, 2]
+```js
+function myFunction(x, y, z) {}
+var args = [0, 1, 2];
+myFunction(...args);
 ```
 
-这个规则对于函数和变量也是适用的。
+所有参数都可以通过展开语法来传值，也不限制多次使用展开语法。
 
-```JavaScript
-function callSomething(thing = something()) {
- return thing;
-}
-
-let numberOfTimesCalled = 0;
-function something() {
-  numberOfTimesCalled += 1;
-  return numberOfTimesCalled;
-}
-
-callSomething(); // 1
-callSomething(); // 2
+```js
+function myFunction(v, w, x, y, z) {}
+var args = [0, 1];
+myFunction(-1, ...args, 2, ...[3]);
 ```
 
-### 默认参数可用于后面的默认参数
+#### 在 new 表达式中应用
 
-已经遇到的参数可用于以后的默认参数：
+使用`new`关键字来调用构造函数时，不能直接使用数组+`apply`的方式（`apply`执行的是调用`[[Call]]`, 而不是构造`[[Construct]]`）。当然, 有了展开语法, 将数组展开为构造函数的参数就很简单了：
 
-```JavaScript
-function greet(name, greeting, message = greeting + ' ' + name) {
-    return [name, greeting, message];
-}
-
-greet('David', 'Hi');  // ["David", "Hi", "Hi David"]
-greet('David', 'Hi', 'Happy Birthday!');  // ["David", "Hi", "Happy Birthday!"]
+```js
+var dateFields = [1970, 0, 1]; // 1970年1月1日
+var d = new Date(...dateFields);
 ```
 
-以下这个例子近似模拟了一些比较简单的情况，并说明了特殊情况是怎么被处理的。
+如果不使用展开语法, 想将数组元素传给构造函数, 实现方式可能是这样的：
 
-```JavaScript
-function go() {
-  return ':P';
-}
-
-function withDefaults(a, b = 5, c = b, d = go(), e = this,
-                      f = arguments, g = this.value) {
-  return [a, b, c, d, e, f, g];
-}
-
-function withoutDefaults(a, b, c, d, e, f, g) {
-  switch (arguments.length) {
-    case 0:
-      a;
-    case 1:
-      b = 5;
-    case 2:
-      c = b;
-    case 3:
-      d = go();
-    case 4:
-      e = this;
-    case 5:
-      f = arguments;
-    case 6:
-      g = this.value;
-    default:
+```js
+function applyAndNew(constructor, args) {
+  function partial() {
+    return constructor.apply(this, args);
   }
-  return [a, b, c, d, e, f, g];
+  if (typeof constructor.prototype === "object") {
+    partial.prototype = Object.create(constructor.prototype);
+  }
+  return partial;
 }
 
-withDefaults.call({value: '=^_^='});
-// [undefined, 5, 5, ":P", {value:"=^_^="}, arguments, "=^_^="]
-
-
-withoutDefaults.call({value: '=^_^='});
-// [undefined, 5, 5, ":P", {value:"=^_^="}, arguments, "=^_^="]
-```
-
-### 函数嵌套定义
-
-在 Gecko 33 (Firefox 33 / Thunderbird 33 / SeaMonkey 2.30) 中引入。在函数体内的函数声明不能引用内部的默认参数，并且会在 SpiderMonkey 抛出一个`ReferenceError`（现在是`TypeError`），参见 bug 1022967。默认参数总是会被首先执行，而在函数体内部的函数声明会在之后生效。
-
-```JavaScript
-// Doesn't work! Throws ReferenceError.
-function f(a = go()) {
-  function go() { return ':P'; }
-}
-```
-
-### 位于默认参数之后非默认参数
-
-在 Gecko 26 (Firefox 26 / Thunderbird 26 / SeaMonkey 2.23 / Firefox OS 1.2)之前，以下代码会造成`SyntaxError`错误。这已经在 bug 1022967 中修复，并在以后的版本中按预期方式工作。参数仍然设置为从左到右，覆盖默认参数，即使后面的参数没有默认值。
-
-```JavaScript
-function f(x = 1, y) {
-  return [x, y];
+function myConstructor() {
+  console.log("arguments.length: " + arguments.length);
+  console.log(arguments);
+  this.prop1 = "val1";
+  this.prop2 = "val2";
 }
 
-f(); // [1, undefined]
-f(2); // [2, undefined]
+var myArguments = ["hi", "how", "are", "you", "mr", null];
+var myConstructorWithArguments = applyAndNew(myConstructor, myArguments);
+
+console.log(new myConstructorWithArguments());
+// (myConstructor构造函数中):           arguments.length: 6
+// (myConstructor构造函数中):           ["hi", "how", "are", "you", "mr", null]
+// ("new myConstructorWithArguments"中): {prop1: "val1", prop2: "val2"}
 ```
 
-### 有默认值的解构参数
+### 构造字面量数组时使用展开语法
 
-你可以通过解构赋值为参数赋值：
+#### 构造字面量数组时更给力
 
-```JavaScript
-function f([x, y] = [1, 2], {z: z} = {z: 3}) {
-  return x + y + z;
-}
+没有展开语法的时候，只能组合使用`push`, `splice`, `concat`等方法，来将已有数组元素变成新数组的一部分。有了展开语法, 通过字面量方式, 构造新数组会变得更简单、更优雅：
 
-f(); // 6
+```js
+var parts = ["shoulders", "knees"];
+var lyrics = ["head", ...parts, "and", "toes"];
+// ["head", "shoulders", "knees", "and", "toes"]
 ```
+
+和参数列表的展开类似，`...`在构造字面量数组时，可以在任意位置多次使用。
+
+#### 数组拷贝(copy)
+
+```js
+var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4);
+
+// arr2 此时变成 [1, 2, 3, 4]
+// arr 不受影响
+```
+
+提示: 实际上, 展开语法和`Object.assign()`行为一致, 执行的都是浅拷贝(只遍历一层)。如果想对多维数组进行深拷贝, 下面的示例就有些问题了。
+
+```js
+var a = [[1], [2], [3]];
+var b = [...a];
+b.shift().shift(); // 1
+// Now array a is affected as well: [[], [2], [3]]
+```
+
+#### 连接多个数组
+
+`Array.concat`函数常用于将一个数组连接到另一个数组的后面。如果不使用展开语法, 代码可能是下面这样的:
+
+```js
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+// 将 arr2 中所有元素附加到 arr1 后面并返回
+var arr3 = arr1.concat(arr2);
+```
+
+使用展开语法:
+
+```js
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+var arr3 = [...arr1, ...arr2];
+```
+
+`Array.unshift`方法常用于在数组的开头插入新元素/数组。不使用展开语法, 示例如下:
+
+```js
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+// 将 arr2 中的元素插入到 arr1 的开头
+Array.prototype.unshift.apply(arr1, arr2); // arr1 现在是 [3, 4, 5, 0, 1, 2]
+```
+
+如果使用展开语法, 代码如下: [请注意, 这里使用展开语法创建了一个新的`arr1`数组，`Array.unshift`方法则是修改了原本存在的`arr1`数组]:
+
+```js
+var arr1 = [0, 1, 2];
+var arr2 = [3, 4, 5];
+arr1 = [...arr2, ...arr1]; // arr1 现在为 [3, 4, 5, 0, 1, 2]
+```
+
+### 构造字面量对象时使用展开语法
+
+[Rest/Spread Properties for ECMAScript](https://github.com/tc39/proposal-object-rest-spread) 提议(stage 4) 对字面量对象增加了展开特性。其行为是, 将已有对象的所有可枚举(enumerable)属性拷贝到新构造的对象中.
+
+浅拷贝(Shallow-cloning, 不包含 prototype) 和对象合并, 可以使用更简短的展开语法。而不必再使用`Object.assign()`方式。
+
+```js
+var obj1 = { foo: "bar", x: 42 };
+var obj2 = { foo: "baz", y: 13 };
+
+var clonedObj = { ...obj1 };
+// 克隆后的对象: { foo: "bar", x: 42 }
+
+var mergedObj = { ...obj1, ...obj2 };
+// 合并后的对象: { foo: "baz", x: 42, y: 13 }
+```
+
+提示: `Object.assign()`函数会触发[setters](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/set)，而展开语法则不会。
+
+提示: 不能替换或者模拟`Object.assign()`函数:
+
+```js
+var obj1 = { foo: "bar", x: 42 };
+var obj2 = { foo: "baz", y: 13 };
+const merge = (...objects) => ({ ...objects });
+
+var mergedObj = merge(obj1, obj2);
+// Object { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
+
+var mergedObj = merge({}, obj1, obj2);
+// Object { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }
+```
+
+在这段代码中, 展开操作符(spread operator)并没有按预期的方式执行: 而是先将多个解构变为剩余参数(rest parameter), 然后再将剩余参数展开为字面量对象.
+
+### 只能用于可迭代对象
+
+在数组或函数参数中使用展开语法时, 该语法只能用于 可迭代对象：
+
+```js
+var obj = { key1: "value1" };
+var array = [...obj]; // TypeError: obj is not iterable
+```
+
+### 展开多个值
+
+在函数调用时使用展开语法，请注意不能超过 JavaScript 引擎限制的最大参数个数。更多详细信息，请参考: [apply()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)

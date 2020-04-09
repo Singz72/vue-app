@@ -87,6 +87,11 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes: [
     {
+      path: "/",
+      component: Block,
+      name: '块级作用域（block）'
+    },
+    {
       path: "/_scope/_block",
       component: Block,
       name: '块级作用域（block）'
