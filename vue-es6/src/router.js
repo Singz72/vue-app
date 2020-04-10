@@ -134,7 +134,7 @@ const router = new VueRouter({
     {
       path: "/Object_initializer",
       component: ObjectInitializer,
-      name: '对象属性加强'
+      name: '对象初始化'
     },
     {
       path: "/destructuring_assignment",
