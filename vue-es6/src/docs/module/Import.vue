@@ -1,10 +1,18 @@
 <template>
-  <div class="import">import</div>
+  <div class="import">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../../md/module/import.md";
 export default {
-  name: "importType"
+  name: "importType",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 
