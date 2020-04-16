@@ -21,11 +21,8 @@ const DestructuringAssignment = () =>
 
 const ImportType = () => import("./docs/module/Import.vue");
 const ExportType = () => import("./docs/module/Export.vue");
-const ExportDefault = () => import("./docs/module/ExportDefault.vue");
 
-const ExtendsType = () => import("./docs/classes/Extends.vue");
-const Species = () => import("./docs/classes/Species.vue");
-const SuperType = () => import("./docs/classes/Super.vue");
+const Classes = () => import("./docs/Classes.vue");
 
 const GeneratorsType = () => import("./docs/Generators.vue");
 const PromiseType = () => import("./docs/Promise.vue");
@@ -152,24 +149,9 @@ const router = new VueRouter({
       name: '导出（export）'
     },
     {
-      path: "/_module/export_default",
-      component: ExportDefault,
-      name: '默认（export default）'
-    },
-    {
-      path: "/_classes/_extends",
-      component: ExtendsType,
-      name: '使用 extends 实现继承'
-    },
-    {
-      path: "/_classes/_species",
-      component: Species,
-      name: '重写构造器'
-    },
-    {
-      path: "/_classes/_super",
-      component: SuperType,
-      name: 'super 关键字'
+      path: "/classes",
+      component: Classes,
+      name: '类（class）'
     },
     {
       path: "/_generators",

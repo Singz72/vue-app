@@ -52,24 +52,10 @@
           <li>
             <router-link to="/_module/_export">导出(export)</router-link>
           </li>
-          <li>
-            <router-link to="/_module/export_default">默认(export default)</router-link>
-          </li>
         </ul>
       </li>
       <li>
-        类
-        <ul>
-          <li>
-            <router-link to="/_classes/_extends">使用extends实现继承</router-link>
-          </li>
-          <li>
-            <router-link to="/_classes/_species">重写构造器</router-link>
-          </li>
-          <li>
-            <router-link to="/_classes/_super">super关键字</router-link>
-          </li>
-        </ul>
+        <router-link to="/classes">类(class)</router-link>
       </li>
       <li>
         <router-link to="/_generators">迭代和生成器</router-link>
@@ -217,7 +203,7 @@ export default {
   width: 290px;
   box-sizing: border-box;
 }
-.menu-container-title{
+.menu-container-title {
   font-size: 2.4em;
   margin: 0.8em 0;
   font-weight: bolder;
