@@ -1,10 +1,18 @@
 <template>
-  <div class="generators">generators</div>
+  <div class="generators">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../md/single/generators.md";
 export default {
-  name: "generatorsType"
+  name: "generatorsType",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 
