@@ -1,10 +1,18 @@
 <template>
-  <div class="symbol">symbol</div>
+  <div class="symbol">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../../md/primitive_data_type/Symbol.md";
 export default {
-  name: "symbolType"
+  name: "symbolType",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 
