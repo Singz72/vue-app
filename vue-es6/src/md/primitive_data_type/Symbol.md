@@ -131,14 +131,14 @@ typeof Symbol.iterator === "symbol";
 
 当使用 symbol 值进行类型转换时需要注意一些事情：
 
-- 尝试将一个 symbol 值转换为一个 number 值时，会抛出一个 TypeError 错误 (e.g. +sym or sym | 0).
-- 使用宽松相等时， Object(sym) == sym returns true.
-- 这会阻止你从一个 symbol 值隐式地创建一个新的 string 类型的属性名。例如，Symbol("foo") + "bar" 将抛出一个 TypeError (can't convert symbol to string).
-- "safer" String(sym) conversion 的作用会像 symbol 类型调用 Symbol.prototype.toString() 一样，但是注意 new String(sym) 将抛出异常。
+- 尝试将一个 symbol 值转换为一个 number 值时，会抛出一个`TypeError`错误 (e.g. `+sym` or `sym | 0`).
+- 使用宽松相等时，`Object(sym) == sym` returns `true`.
+- 这会阻止你从一个 symbol 值隐式地创建一个新的 string 类型的属性名。例如，`Symbol("foo") + "bar"`将抛出一个`TypeError` (can't convert symbol to string).
+- "safer" String(sym) conversion 的作用会像 symbol 类型调用`Symbol.prototype.toString()`一样，但是注意`new String(sym)`将抛出异常。
 
 ### Symbols 与 for...in 迭代
 
-Symbols 在 for...in 迭代中不可枚举。另外，Object.getOwnPropertyNames() 不会返回 symbol 对象的属性，但是你能使用 Object.getOwnPropertySymbols() 得到它们。
+Symbols 在`for...in`迭代中不可枚举。另外，`Object.getOwnPropertyNames()`不会返回 symbol 对象的属性，但是你能使用`Object.getOwnPropertySymbols()`得到它们。
 
 ```js
 var obj = {};
@@ -155,7 +155,7 @@ for (var i in obj) {
 
 ### Symbols 与 JSON.stringify()
 
-当使用 JSON.stringify() 时，以 symbol 值作为键的属性会被完全忽略：
+当使用`JSON.stringify()`时，以 symbol 值作为键的属性会被完全忽略：
 
 ```js
 JSON.stringify({ [Symbol("foo")]: "foo" });

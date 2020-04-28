@@ -57,6 +57,7 @@ p {
   word-spacing: 0.05em;
 }
 
+li code,
 p code {
   background-color: #faebd8;
   padding: 0 2px;
