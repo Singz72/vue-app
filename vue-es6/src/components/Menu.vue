@@ -79,7 +79,13 @@
             <router-link to="/primitive_data_type/_set">Set类型</router-link>
           </li>
           <li>
+            <router-link to="/primitive_data_type/_weakSet">WeakSet类型</router-link>
+          </li>
+          <li>
             <router-link to="/primitive_data_type/_map">Map类型</router-link>
+          </li>
+          <li>
+            <router-link to="/primitive_data_type/_weakMap">WeakMap类型</router-link>
           </li>
           <li>
             <router-link to="/primitive_data_type/_typedArray">TypedArray类型</router-link>

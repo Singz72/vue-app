@@ -1,13 +1,13 @@
 <template>
-  <div class="map">
+  <div class="weakSet">
     <span v-html="content" v-highlightInserted></span>
   </div>
 </template>
 
 <script>
-import content from "../../md/primitive_data_type/Map.md";
+import content from "../../md/primitive_data_type/WeakSet.md";
 export default {
-  name: "mapType",
+  name: "weakSetType",
   data() {
     return {
       content

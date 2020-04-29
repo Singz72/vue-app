@@ -31,7 +31,9 @@ const ReflectType = () => import("./docs/Reflect.vue");
 
 const SymbolType = () => import("./docs/primitive_data_type/Symbol.vue");
 const SetType = () => import("./docs/primitive_data_type/Set.vue");
+const WeakSetType = () => import("./docs/primitive_data_type/WeakSet.vue");
 const MapType = () => import("./docs/primitive_data_type/Map.vue");
+const WeakMapType = () => import("./docs/primitive_data_type/WeakMap.vue");
 const TypedArrayType = () =>
   import("./docs/primitive_data_type/TypedArray.vue");
 
@@ -42,114 +44,124 @@ const router = new VueRouter({
     {
       path: "/",
       component: Block,
-      name: '块级作用域（block）'
+      name: "块级作用域（block）",
     },
     {
       path: "/_scope/_block",
       component: Block,
-      name: '块级作用域（block）'
+      name: "块级作用域（block）",
     },
     {
       path: "/_scope/_let",
       component: LetType,
-      name: '块级变量 let'
+      name: "块级变量 let",
     },
     {
       path: "/_scope/_const",
       component: ConstType,
-      name: '块级常量 const'
+      name: "块级常量 const",
     },
     {
       path: "/arrow_functions",
       component: ArrowFunctions,
-      name: '箭头函数'
+      name: "箭头函数",
     },
     {
       path: "/parameters/default_parameters",
       component: DefaultParameters,
-      name: '默认参数值'
+      name: "默认参数值",
     },
     {
       path: "/parameters/rest_parameters",
       component: RestParameters,
-      name: '剩余参数'
+      name: "剩余参数",
     },
     {
       path: "/parameters/spread_parameters",
       component: SpreadParameters,
-      name: '展开运算符'
+      name: "展开运算符",
     },
     {
       path: "/template_strings",
       component: TemplateStrings,
-      name: '模版字面量'
+      name: "模版字面量",
     },
     {
       path: "/Object_initializer",
       component: ObjectInitializer,
-      name: '对象初始化'
+      name: "对象初始化",
     },
     {
       path: "/destructuring_assignment",
       component: DestructuringAssignment,
-      name: '解构赋值'
+      name: "解构赋值",
     },
     {
       path: "/_module/_import",
       component: ImportType,
-      name: '导入（import）'
+      name: "导入（import）",
     },
     {
       path: "/_module/_export",
       component: ExportType,
-      name: '导出（export）'
+      name: "导出（export）",
     },
     {
       path: "/classes",
       component: Classes,
-      name: '类（class）'
+      name: "类（class）",
     },
     {
       path: "/_generators",
       component: GeneratorsType,
-      name: '迭代和生成器'
+      name: "迭代和生成器",
     },
     {
       path: "/_promise",
       component: PromiseType,
-      name: 'Promise'
+      name: "Promise",
     },
     {
       path: "/_proxy",
       component: ProxyType,
-      name: '代理（Proxy）'
+      name: "代理（Proxy）",
     },
     {
       path: "/_reflect",
       component: ReflectType,
-      name: '反射（Reflect）'
+      name: "反射（Reflect）",
     },
     {
       path: "/primitive_data_type/_symbol",
       component: SymbolType,
-      name: 'Symbol 类型'
+      name: "Symbol 类型",
     },
     {
       path: "/primitive_data_type/_set",
       component: SetType,
-      name: 'Set 类型'
+      name: "Set 类型",
+    },
+    {
+      path: "/primitive_data_type/_weakSet",
+      component: WeakSetType,
+      name: "WeakSet 类型",
     },
     {
       path: "/primitive_data_type/_map",
       component: MapType,
-      name: 'Map 类型'
+      name: "Map 类型",
+    },
+    {
+      path: "/primitive_data_type/_weakMap",
+      component: WeakMapType,
+      name: "WeakMap 类型",
     },
     {
       path: "/primitive_data_type/_typedArray",
       component: TypedArrayType,
-      name: 'TypedArray 类型'
+      name: "TypedArray 类型",
     },
-  ]
+  ],
 });
 
 export default router;
