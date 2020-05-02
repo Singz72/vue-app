@@ -1,6 +1,6 @@
 # map
 
-> Map 对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者原始值) 都可以作为一个键或一个值。
+`Map`对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者原始值) 都可以作为一个键或一个值。
 
 ## 描述
 
@@ -189,6 +189,8 @@ console.log(Array.from(myMap.keys())); // 输出 ["key1", "key2"]
 
 ### 复制或合并 Maps
 
+Map 能像数组一样被复制：
+
 ```js
 let original = new Map([[1, "one"]]);
 
@@ -196,4 +198,49 @@ let clone = new Map(original);
 
 console.log(clone.get(1)); // one
 console.log(original === clone); // false. 浅比较 不为同一个对象的引用
+```
+
+Map 对象间可以进行合并，但是会保持键的唯一性。
+
+```js
+let first = new Map([
+  [1, "one"],
+  [2, "two"],
+  [3, "three"],
+]);
+
+let second = new Map([
+  [1, "uno"],
+  [2, "dos"],
+]);
+
+// 合并两个Map对象时，如果有重复的键值，则后面的会覆盖前面的。
+// 展开运算符本质上是将Map对象转换成数组。
+let merged = new Map([...first, ...second]);
+
+console.log(merged.get(1)); // uno
+console.log(merged.get(2)); // dos
+console.log(merged.get(3)); // three
+```
+
+Map 对象也能与数组合并：
+
+```js
+let first = new Map([
+  [1, "one"],
+  [2, "two"],
+  [3, "three"],
+]);
+
+let second = new Map([
+  [1, "uno"],
+  [2, "dos"],
+]);
+
+// Map对象同数组进行合并时，如果有重复的键值，则后面的会覆盖前面的。
+let merged = new Map([...first, ...second, [1, "eins"]]);
+
+console.log(merged.get(1)); // eins
+console.log(merged.get(2)); // dos
+console.log(merged.get(3)); // three
 ```
