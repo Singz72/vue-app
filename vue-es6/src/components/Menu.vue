@@ -1,6 +1,8 @@
 <template>
   <div class="menu-container">
-    <div class="menu-container-title">ES6特性简介列表</div>
+    <div class="menu-container-title">
+      <a href="https://singz72.com">ES6特性简介列表</a>
+    </div>
     <ul>
       <li>
         作用域
@@ -23,13 +25,17 @@
         参数处理
         <ul>
           <li>
-            <router-link to="/parameters/default_parameters">默认参数值</router-link>
+            <router-link to="/parameters/default_parameters"
+              >默认参数值</router-link
+            >
           </li>
           <li>
             <router-link to="/parameters/rest_parameters">剩余参数</router-link>
           </li>
           <li>
-            <router-link to="/parameters/spread_parameters">展开运算符</router-link>
+            <router-link to="/parameters/spread_parameters"
+              >展开运算符</router-link
+            >
           </li>
         </ul>
       </li>
@@ -73,37 +79,42 @@
         新增数据类型
         <ul>
           <li>
-            <router-link to="/primitive_data_type/_symbol">Symbol类型</router-link>
+            <router-link to="/primitive_data_type/_symbol"
+              >Symbol类型</router-link
+            >
           </li>
           <li>
             <router-link to="/primitive_data_type/_set">Set类型</router-link>
           </li>
           <li>
-            <router-link to="/primitive_data_type/_weakSet">WeakSet类型</router-link>
+            <router-link to="/primitive_data_type/_weakSet"
+              >WeakSet类型</router-link
+            >
           </li>
           <li>
             <router-link to="/primitive_data_type/_map">Map类型</router-link>
           </li>
           <li>
-            <router-link to="/primitive_data_type/_weakMap">WeakMap类型</router-link>
+            <router-link to="/primitive_data_type/_weakMap"
+              >WeakMap类型</router-link
+            >
           </li>
           <li>
-            <router-link to="/primitive_data_type/_typedArray">TypedArray类型</router-link>
+            <router-link to="/primitive_data_type/_typedArray"
+              >TypedArray类型</router-link
+            >
           </li>
         </ul>
       </li>
       <!-- <li>尾递归优化</li> -->
     </ul>
-    <div class="record">
-      <a href="http://www.beian.miit.gov.cn" target="_blank">蜀ICP备17020743号</a>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "menu-container",
-  props: {}
+  props: {},
 };
 </script>
 
@@ -125,17 +136,5 @@ export default {
   font-size: 2.4em;
   margin: 0.8em 0;
   font-weight: bolder;
-}
-.record {
-  padding: 40px 0 10px 0;
-  line-height: 18px;
-  vertical-align: middle;
-  font-size: 12px;
-}
-.record a {
-  color: rgba(37, 43, 58, 0.7);
-}
-.record a:hover {
-  color: #c7000b;
 }
 </style>

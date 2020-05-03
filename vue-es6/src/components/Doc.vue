@@ -1,20 +1,25 @@
 <template>
   <div class="doc-container">
-    <div class="doc-title">{{title}}</div>
+    <div class="doc-title">{{ title }}</div>
     <div class="doc-main">
       <router-view></router-view>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "./Footer";
 export default {
   name: "doc-container",
   computed: {
     title() {
       return this.$route.name;
-    }
-  }
+    },
+  },
+  components: {
+    Footer,
+  },
 };
 </script>
 
@@ -35,7 +40,7 @@ export default {
   font-family: STSong;
 }
 .doc-main {
-  padding: 19px 35px 70px;
+  padding: 19px 35px 40px;
   /* max-width: 700px; */
 }
 .doc-main p img {
