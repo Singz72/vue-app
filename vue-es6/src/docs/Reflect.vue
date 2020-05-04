@@ -1,10 +1,18 @@
 <template>
-  <div class="reflect">reflect</div>
+  <div class="reflect">
+    <span v-html="content" v-highlightInserted></span>
+  </div>
 </template>
 
 <script>
+import content from "../md/single/Reflect.md";
 export default {
-  name: "reflectType"
+  name: "reflectType",
+  data() {
+    return {
+      content
+    };
+  }
 };
 </script>
 
